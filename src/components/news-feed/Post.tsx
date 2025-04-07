@@ -22,8 +22,8 @@ export const Post: FC<TPostProps> = ({
           <Image
             src={mainCategory?.image || '/not-found-avatar.jpg'}
             alt={mainCategory?.name || ''} // NOT CORRECT
-            width={20}
-            height={20}
+            width={13.33}
+            height={13.33}
           />
         </Link>
       </div>
