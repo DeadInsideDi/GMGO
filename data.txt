@@ -2,3 +2,5 @@
 https://1l87xp3d-3000.euw.devtunnels.ms/
 npm install -g sass
 npm install -D sass
+https://www.figma.com/design/xdj89ABAEhCiI3QjGhqcWG/-Success--GMGO-Proj--Copy-?node-id=1-22&t=C6OAjlaJVX5fcy9N-0
+https://www.figma.com/proto/xdj89ABAEhCiI3QjGhqcWG/-Success--GMGO-Proj--Copy-?node-id=1-22&p=f&t=gFcwFRB3YTn0VnBU-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1
