@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { createJSONStorage, persist } from 'zustand/middleware'
 export type TAccount = {
   id: number
   name: string
@@ -22,23 +23,31 @@ export interface IAccountStore {
   isViewedStory: (id: number) => boolean
 }
 
-export const useAccountStore = create<IAccountStore>((set, get) => ({
-  account: {
-    id: 0,
-    name: '',
-    fullName: '',
-    avatar: '',
-    privacyInfo: {
-      viewedStoryIds: [1],
-      viewedPostIds: [1],
-      likedPostIds: [2],
-      DislikedPostIds: [3],
-      FavoritePostIds: [2],
-      SubscribedAccountIds: [3],
+export const useAccountStore = create<IAccountStore>()(
+  persist(
+    (set, get) => ({
+      account: {
+        id: 0,
+        name: '',
+        fullName: '',
+        avatar: '',
+        privacyInfo: {
+          viewedStoryIds: [1],
+          viewedPostIds: [1],
+          likedPostIds: [2],
+          DislikedPostIds: [3],
+          FavoritePostIds: [2],
+          SubscribedAccountIds: [3],
+        },
+      },
+      postsFilterState: 'Popular',
+      setPostsFilterState: state => set({ postsFilterState: state }),
+      isViewedPost: id => get().account.privacyInfo.viewedPostIds.includes(id),
+      isViewedStory: id => get().account.privacyInfo.viewedStoryIds.includes(id),
+    }),
+    {
+      name: 'account-storage',
+      storage: createJSONStorage(() => localStorage),
     },
-  },
-  postsFilterState: 'Popular',
-  setPostsFilterState: state => set({ postsFilterState: state }),
-  isViewedPost: id => get().account.privacyInfo.viewedPostIds.includes(id),
-  isViewedStory: id => get().account.privacyInfo.viewedStoryIds.includes(id),
-}))
+  ),
+)
