@@ -5,14 +5,17 @@
   --card-border-color: var(--primary-color);
   --ellipse-border-color: var(--primary-color);
   &__container {
-    overflow: hidden;
+    overflow-x: scroll;
+    &::-webkit-scrollbar {
+      height: 0px;
+    }
     width: 598px;
     height: 190.55px;
     display: flex;
     width: inherit;
     gap: 8.71px;
-    &[data-scroll-at='start'] ~ .carousel__button-prev,
-    &[data-scroll-at='end'] ~ .carousel__button-next {
+    &[data-scroll-at='start'] ~ .carousel__button--prev,
+    &[data-scroll-at='end'] ~ .carousel__button--next {
       opacity: 0;
     }
   }
