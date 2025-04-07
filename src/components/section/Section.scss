@@ -1,0 +1,10 @@
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  .section {
+    width: 100%;
+    padding: 16px 18px;
+    font-weight: 600;
+  }
+}

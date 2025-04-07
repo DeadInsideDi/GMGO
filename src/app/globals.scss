@@ -1,0 +1,111 @@
+@import url(../../public/Lato/index.css);
+
+:root {
+  --max-width: 1300px;
+  --menu-width: 187px;
+  --social-width: 298px;
+
+  --primary-color: #eb6f65;
+  --primary-hover-color: color-mix(in oklab, var(--primary-color) 100%, #000 2.5%);
+  --primary-active-color: color-mix(in oklab, var(--primary-color) 100%, #000 5%);
+
+  --secondary-color: #fdfeff;
+  --secondary-hover-color: #f5f7f9;
+  --secondary-active-color: color-mix(in oklab, var(--secondary-color) 100%, #000 5%);
+
+  --text-color: #262d35;
+  --text-hover-color: color-mix(in oklab, var(--text-color) 100%, white 19%);
+
+  --light-text-color: #808191;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+html {
+  font-family: Jost, sans-serif;
+  background-color: var(--secondary-color);
+  transition: 0.2s;
+  padding: 0 2rem;
+}
+
+body {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+button,
+input {
+  background: none;
+  color: inherit;
+  border: none;
+  font: inherit;
+  outline: inherit;
+  // font-size: 100%;
+}
+
+a {
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  color: inherit;
+  // color: var(--text-color);
+}
+
+button {
+  cursor: pointer;
+}
+img {
+  vertical-align: middle;
+  justify-self: center;
+  border-style: none;
+}
+
+*::placeholder {
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.primary-button,
+.secondary-button {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  border-radius: 8px;
+  min-width: 96px;
+}
+.primary-button {
+  color: var(--secondary-color);
+  font-weight: 600;
+  background-color: var(--primary-color);
+  &:hover {
+    background-color: var(--primary-hover-color);
+  }
+  &:active {
+    background-color: var(--primary-active-color);
+  }
+}
+.secondary-button {
+  color: var(--text-color);
+  &--active {
+    background-color: var(--secondary-hover-color);
+    cursor: default;
+  }
+
+  &:not(.secondary-button--active):hover {
+    background-color: var(--secondary-hover-color);
+  }
+  &:active {
+    background-color: var(--secondary-active-color);
+  }
+}
+
+.main {
+  display: flex;
+  gap: 111px;
+}

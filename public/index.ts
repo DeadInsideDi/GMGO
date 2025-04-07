@@ -1,0 +1,7 @@
+export { default as ArrowRight } from './arrow-right.svg'
+export { default as Ellipse } from './ellipse.svg'
+export { default as Hide } from './hide.svg'
+export { default as RoundedArrowDown } from './rounded-arrow-down.svg'
+export { default as Search } from './search.svg'
+export { default as See } from './see.svg'
+export { default as User } from './user.svg'

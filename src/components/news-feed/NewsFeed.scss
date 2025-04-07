@@ -1,0 +1,52 @@
+.news-feed {
+  margin-top: 24px;
+  &__filter {
+    width: 362px;
+    height: 43px;
+    display: flex;
+    gap: 32px;
+
+    > button {
+      font-weight: 600;
+      font-size: 18px;
+      color: var(--light-text-color);
+      &:hover {
+        color: var(--text-color);
+      }
+      &.active {
+        color: var(--text-color);
+        position: relative;
+        &::before {
+          content: '';
+          position: absolute;
+          bottom: 3px;
+          width: 50%;
+          height: 3px;
+          background-color: var(--primary-color);
+          border-radius: 32px;
+        }
+      }
+    }
+  }
+
+  &__posts {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    .post {
+      padding: 24px;
+
+      &__category {
+        width: 20px;
+        height: 20px;
+        border-radius: 4px;
+        background-color: rgba(174, 162, 255, 0.3);
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+      }
+    }
+  }
+}

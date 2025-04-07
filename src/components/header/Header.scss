@@ -1,0 +1,71 @@
+// @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@600&display=swap');
+
+.header {
+  height: 90px;
+  display: flex;
+  gap: 111px;
+  align-items: center;
+
+  .menu {
+    min-width: var(--menu-width);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logo {
+      display: flex;
+    }
+    .burger {
+      position: relative;
+      width: 32px;
+      height: 32px;
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        height: 2px;
+        width: 32px;
+        background-color: #1b1d21;
+        border-radius: 1px;
+      }
+      &::before {
+        top: 11px;
+      }
+      &::after {
+        bottom: 11px;
+      }
+    }
+  }
+  .search {
+    position: relative;
+    flex-grow: 1;
+    max-width: 592px;
+
+    &__input {
+      height: 55px;
+      width: 100%;
+      background-color: var(--secondary-hover-color);
+      border-radius: 8px;
+      padding: 16px 48px;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--light-text-color);
+    }
+    &__image {
+      position: absolute;
+      left: 18px;
+      top: 18px;
+    }
+  }
+  .account-container {
+    width: var(--social-width);
+    display: flex;
+    justify-content: end; // sign -> around
+    .login {
+      width: 111px;
+      height: 44px;
+      padding: 11px 20px;
+      gap: 10px;
+    }
+  }
+}

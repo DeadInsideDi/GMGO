@@ -1,0 +1,30 @@
+.content {
+  padding-top: 4px;
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 592px;
+
+  .stories {
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 17px; ////////////
+      h3,
+      button {
+        font-weight: 700;
+        color: var(--text-color);
+      }
+      h3 {
+        font-size: 18px;
+      }
+      button {
+        font-size: 12px;
+        font-family: Lato;
+        display: flex;
+        align-items: flex-end;
+        gap: 2px;
+      }
+    }
+  }
+}

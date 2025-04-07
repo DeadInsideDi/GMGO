@@ -1,0 +1,39 @@
+.discuss-post {
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-weight: 600;
+  font-size: 14px;
+  text-wrap: balance;
+
+  &:hover {
+    color: var(--text-hover-color);
+  }
+  &__details {
+    position: relative;
+    display: flex;
+    gap: 12px;
+    font-size: 12px;
+    line-height: 18px;
+
+    span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      height: fit-content; // 18px
+      font-family: Lato;
+      font-weight: 600;
+      color: var(--light-text-color);
+      // align-items: center;
+    }
+  }
+  &__comments {
+    color: #9a9a9a;
+    font-weight: 700;
+  }
+  &__category {
+    position: absolute;
+    right: 0;
+  }
+}

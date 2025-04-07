@@ -1,0 +1,15 @@
+.menu-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: var(--menu-width);
+  padding-top: 9px;
+  .publish {
+    width: 100%;
+    padding: 16px 26px;
+    gap: 14px;
+    font-weight: 500; // should be 700 but too bold
+    letter-spacing: 0.5px;
+    align-items: baseline;
+  }
+}

@@ -1,0 +1,13 @@
+.custom-tag {
+  display: inline-flex;
+  align-items: center;
+  span {
+    font-weight: 700;
+    &:nth-child(1) {
+      color: #9a9a9a;
+    }
+    :nth-child(2) {
+      color: var(--text-color);
+    }
+  }
+}

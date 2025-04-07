@@ -1,0 +1,90 @@
+.carousel {
+  user-select: none;
+  position: relative;
+  height: fit-content;
+  --card-border-color: var(--primary-color);
+  --ellipse-border-color: var(--primary-color);
+  &__container {
+    overflow: hidden;
+    width: 598px;
+    height: 190.55px;
+    display: flex;
+    width: inherit;
+    gap: 8.71px;
+    &[data-scroll-at='start'] ~ .carousel__button-prev,
+    &[data-scroll-at='end'] ~ .carousel__button-next {
+      opacity: 0;
+    }
+  }
+  .card {
+    position: relative;
+    border: 2px solid var(--card-border-color);
+    border-radius: 8px;
+    height: 100%;
+    width: 111.24px;
+    padding: 2px;
+    &__gradient {
+      position: absolute;
+      inset: 2px;
+      border-radius: inherit;
+      background: linear-gradient(to bottom, transparent 50%, black 100%);
+      opacity: 0.8;
+    }
+    &__background {
+      inset: 2px;
+      position: absolute;
+      border-radius: inherit;
+    }
+    &__overlay {
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      left: 50%;
+      bottom: 86.08px; // Fixed
+      width: 0;
+      span {
+        position: absolute;
+        top: 56.37px;
+        color: white;
+        font-weight: 600; // 700
+        font-size: 13px;
+      }
+    }
+    &__avatar {
+      position: absolute;
+      top: 5.48px;
+    }
+    &__ellipse {
+      position: absolute;
+      stroke: var(--ellipse-border-color);
+    }
+    &--viewed {
+      --card-border-color: var(--secondary-color);
+      --ellipse-border-color: #c0c0c0;
+    }
+  }
+  &__button {
+    --carousel-btn-size: 48px;
+    position: absolute;
+    height: var(--carousel-btn-size);
+    width: var(--carousel-btn-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: white;
+    top: calc(50% - var(--carousel-btn-size) / 2);
+    &--prev {
+      box-shadow: -2px 0px 12px 2px #00000012;
+      left: calc(var(--carousel-btn-size) / -2 + 4px);
+      img {
+        margin-right: 4px;
+      }
+    }
+    &--next {
+      box-shadow: 2px 0px 12px 2px #00000012;
+      right: calc(var(--carousel-btn-size) / -2 - 2px);
+      rotate: 180deg;
+    }
+  }
+}
