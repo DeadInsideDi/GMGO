@@ -30,22 +30,48 @@
   }
 
   &__posts {
-    margin-top: 20px;
+    margin-top: 16px;
     display: flex;
     flex-direction: column;
     gap: 32px;
+    border: #f2f2f2 solid 1px;
+    border-radius: 12px;
 
     .post {
-      padding: 24px;
-
       &__category {
-        width: 20px;
-        height: 20px;
-        border-radius: 4px;
-        background-color: rgba(174, 162, 255, 0.3);
         display: flex;
-        justify-content: center;
         align-items: center;
+        gap: 10px;
+        margin: 24px 0 12px 24px;
+
+        font-family: Lato;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--text-color);
+        &__link {
+          display: flex;
+          background-color: rgba(174, 162, 255, 0.3);
+          width: 20px;
+          height: 20px;
+          border-radius: 4px;
+          justify-content: center;
+          align-items: center;
+        }
+
+        // &__image {
+        // }
+      }
+      h3 {
+        margin-left: 24px;
+        font-size: 24px;
+        line-height: 32px;
+        font-weight: 700;
+        color: var(--text-color);
+      }
+      p {
+        font-family: Lato;
+        line-height: 24px;
+        font-size: 14px;
       }
     }
   }
