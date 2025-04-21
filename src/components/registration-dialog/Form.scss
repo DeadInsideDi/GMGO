@@ -1,0 +1,271 @@
+div.wrapper {
+  & > button {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    height: 32px;
+    width: 32px;
+  }
+
+  & > h2 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 100px;
+    margin-bottom: 24px;
+  }
+
+  & > div.social-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    color: var(--secondary-color);
+    margin-bottom: 21px;
+
+    & > button {
+      position: relative;
+      height: 48px;
+      width: 48px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #f2f2f2;
+      border-radius: 50%;
+      backface-visibility: hidden;
+
+      & > svg {
+        max-width: 20px;
+        fill: var(--text-color);
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0px;
+        border-radius: 50%;
+      }
+
+      &:hover {
+        background-color: var(--text-color);
+        translate: 0 -2px;
+
+        & > svg {
+          fill: white;
+        }
+
+        &::before {
+          translate: 0 3px;
+        }
+      }
+    }
+  }
+
+  & > form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    & > div.input-container {
+      display: flex;
+      position: relative;
+      margin-bottom: 18px;
+      user-select: none;
+
+      & > input,
+      & > input ~ label {
+        font-family: Lato;
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      & > input {
+        padding: 30px 18px 13px;
+        border: 1px solid #f1f1f1;
+        border-radius: 8px;
+        // margin-bottom: 18px;
+        width: 100%;
+        height: 60px;
+
+        & ~ label {
+          pointer-events: none;
+          position: absolute;
+          top: calc((60px - 1rem) / 2);
+          left: 18px;
+          color: var(--light-text-color);
+        }
+        &:invalid ~ label {
+          color: var(--primary-hover-color);
+        }
+
+        &:focus ~ label,
+        &:not([value='']) ~ label {
+          font-size: 12px;
+          top: 12px;
+        }
+      }
+
+      & > button[aria-label$='password'] {
+        cursor: pointer;
+        position: absolute;
+        right: 24px;
+        align-self: center;
+        height: 17px;
+        width: 20px;
+        & > svg {
+          height: inherit;
+          width: inherit;
+        }
+      }
+    }
+
+    & > button[type='submit'] {
+      background-color: var(--primary-color);
+      height: 55px;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+
+      &:hover {
+        background-color: var(--primary-hover-color);
+      }
+      &:active {
+        background-color: var(--primary-active-color);
+      }
+    }
+
+    &.authorization {
+      & > button[aria-label='Forgot password'] {
+        font-size: 12px;
+        font-weight: 600;
+        font-family: Lato;
+        width: fit-content;
+        margin: 6px 0px 30px;
+      }
+    }
+
+    &.email-sended {
+      align-items: center;
+      & > p {
+        font-family: Lato;
+        font-size: 12px;
+        line-height: 19px;
+        color: var(--light-text-color);
+        text-align: center;
+        margin-top: -12px;
+        margin-bottom: 18px;
+      }
+
+      & > button[type='submit'] {
+        background-color: color-mix(in srgb, var(--primary-color) 5%, transparent 95%);
+        border: 1px solid color-mix(in srgb, var(--primary-color) 20%, transparent 80%);
+        color: var(--primary-color);
+        margin-bottom: 38px;
+        width: 300px;
+        font-family: Raleway;
+      }
+    }
+
+    &.registration {
+      & > div.password-strength {
+        margin-top: -3px;
+        margin-bottom: 16px;
+        display: flex;
+        justify-content: space-between;
+        color: var(--password-strength-color);
+        font-family: Lato;
+        font-size: 12px;
+        font-weight: 700;
+        & > div.marks {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          & > div {
+            height: 6px;
+            width: 22.75px;
+            border-radius: 2px;
+            background-color: #ebedee;
+            &.mark--active {
+              background-color: var(--password-strength-color);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  & > p.terms {
+    margin: 32px 0px 38px 0px;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 18px;
+    font-family: Lato;
+    color: #b2b3bd;
+    text-align: left;
+
+    & > a {
+      font-weight: 700;
+    }
+  }
+
+  & > h2,
+  & > form,
+  & > p.terms {
+    width: 378px;
+  }
+}
+
+@media (max-width: 768px) {
+  body > dialog[open].registration-dialog > div.wrapper {
+    height: calc(100vh - 40px);
+    width: 100vw;
+    border-radius: 24px 24px 0 0;
+    padding: 15px;
+
+    & > button {
+      position: absolute;
+      top: 17px;
+      right: calc(50% - 12px);
+      height: 24px;
+      width: 24px;
+      border-radius: 50%;
+      & > svg[alt='close'] {
+        color: #e1e1e1;
+        opacity: 1 !important;
+        &:hover {
+          color: var(--grey-text-color);
+        }
+        &:active {
+          translate: 0 4px;
+        }
+      }
+    }
+
+    & > h2 {
+      width: 100%;
+      margin-top: 53px;
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+
+    & > .social-buttons {
+      & > button {
+        height: 36px;
+        width: 36px;
+        & > svg {
+          max-width: 15px;
+        }
+      }
+    }
+    & > form {
+      width: 100%;
+    }
+    & > p.terms {
+      width: calc(100% - 30px);
+      position: absolute;
+      bottom: 24px;
+      margin: 0;
+    }
+  }
+}

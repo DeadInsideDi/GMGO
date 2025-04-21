@@ -1,19 +1,11 @@
 'use client'
 import { FC, useEffect, useRef, useState } from 'react'
 import { Category } from './Category'
-import { TCategoryItem } from './category.data'
+import { TCategoryItem, generalCategory } from './category.data'
 import './Category.scss'
 
 export type TCategoriesProps = {
   categories: TCategoryItem[]
-}
-
-const generalCategory: TCategoryItem = {
-  id: 0,
-  name: 'Все',
-  image: '',
-  href: '/',
-  usageCount: 0,
 }
 
 export const Categories: FC<TCategoriesProps> = ({ categories }: TCategoriesProps) => {

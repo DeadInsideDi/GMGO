@@ -5,7 +5,7 @@ export const authors = [
   {
     id: 1,
     name: 'Анна',
-    fullName: 'Анна Герасмова',
+    fullName: 'Анна Герасимова',
     avatar: '/avatar-Anna.png',
   },
   {
@@ -31,5 +31,11 @@ export const authors = [
     name: 'Елизавета',
     fullName: 'Елизавета Придумонава',
     avatar: '/avatar-Elizaveta.png',
+  },
+  {
+    id: 6,
+    name: 'Владислав',
+    fullName: 'Владислав Придумонов',
+    avatar: '/avatar-Vlad.png',
   },
 ]

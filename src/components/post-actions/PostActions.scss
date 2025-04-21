@@ -1,0 +1,74 @@
+.actions {
+  margin: 16px 27px 18px 24px;
+  height: 20px;
+  color: var(--text-color);
+  font-family: Lato;
+  font-weight: 700;
+  font-size: 14px;
+
+  display: grid;
+  justify-items: end;
+  grid-template-columns: 0fr 0fr 0fr 1fr;
+  grid-column-gap: 18px;
+
+  & > button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    &.like-button,
+    &.dislike-button {
+      &.is-active {
+        color: var(--primary-color);
+        svg {
+          stroke: var(--primary-color);
+        }
+      }
+    }
+
+    &.like-button,
+    &.dislike-button,
+    &.comment-button {
+      &:hover {
+        transform: translateY(-2px);
+        padding-bottom: 2px;
+        margin-bottom: -2px;
+      }
+    }
+    &.share-button {
+      &:hover {
+        transform: translateX(-2px);
+        padding-right: 2px;
+        margin-right: -2px;
+      }
+    }
+
+    &.dislike-button svg {
+      rotate: 180deg;
+    }
+    &.comment-button svg {
+      stroke: var(--text-color);
+    }
+    &.favorite-button {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+
+      &.is-active,
+      &:hover {
+        svg {
+          fill: var(--text-color);
+        }
+      }
+
+      svg {
+        stroke: var(--text-color);
+      }
+    }
+    &.more-info-button {
+      position: absolute;
+      top: 15px;
+      right: 16px;
+    }
+  }
+}

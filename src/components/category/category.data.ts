@@ -6,6 +6,14 @@ export type TCategoryItem = {
   usageCount: number
 }
 
+export const generalCategory: TCategoryItem = {
+  id: 0,
+  name: 'Все',
+  image: '',
+  href: '/',
+  usageCount: 0,
+}
+
 export const categories = [
   {
     id: 1,

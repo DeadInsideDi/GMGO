@@ -1,0 +1,66 @@
+.tooltip {
+  position: relative;
+  & > button {
+    color: var(--light-text-color);
+
+    &:hover {
+      color: var(--primary-color);
+      background-color: white;
+    }
+  }
+
+  & > .tooltip__content {
+    // display: grid; // Type Grid
+    display: flex; // Type Flex
+
+    position: absolute;
+    left: 50%;
+    translate: -50%;
+    // grid-template-columns: repeat(4, 1fr); // Type Grid
+    width: 345px; // Type Flex
+    flex-wrap: wrap; // Type Flex
+    gap: 8px;
+    background-color: white;
+    padding: 12px;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    bottom: calc(100% + 10px);
+    opacity: 0;
+    pointer-events: none;
+
+    &::before {
+      content: '';
+      position: absolute;
+      rotate: 45deg;
+      bottom: -7px;
+      left: 50%;
+      translate: -50%;
+      height: 14px;
+      width: 14px;
+      background-color: white;
+    }
+  }
+
+  &:has(button:focus) {
+    & > button {
+      color: var(--primary-color);
+      background-color: white;
+    }
+    & > .tooltip__content {
+      bottom: calc(100% + 16px);
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+  // &--active {
+  //   button {
+  //     color: var(--primary-color);
+  //     background-color: white;
+  //   }
+  //   .tooltip__content {
+  //     // display: grid; // Type Grid
+  //     display: flex; // Type Flex
+  //   }
+  // }
+}

@@ -1,0 +1,53 @@
+dialog[open].registration-dialog {
+  justify-self: center;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  align-items: center;
+  background-color: transparent;
+  position: absolute;
+  top: -55px;
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(1px);
+  }
+
+  & > img[alt='character'] {
+    translate: 10px 103px;
+    z-index: 1;
+  }
+
+  & > div.wrapper {
+    position: relative;
+    background-color: var(--secondary-color);
+    border-radius: 24px;
+    width: 554px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & svg[alt='close'] {
+      color: var(--light-text-color);
+      opacity: 0.15;
+      &:hover {
+        opacity: 0.3;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  body > dialog[open].registration-dialog {
+    position: fixed;
+    inset: 40px 0 0 0;
+    &:modal {
+      max-width: 100vw;
+    }
+
+    & > img[alt='character'] {
+      display: none;
+    }
+  }
+}

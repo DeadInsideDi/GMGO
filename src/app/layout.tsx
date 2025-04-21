@@ -3,8 +3,8 @@ import { Jost, Raleway } from 'next/font/google'
 import { Header } from '../components/header/Header'
 import { MenuBar } from '../components/menu-bar/MenuBar'
 import { SocialBar } from '../components/social-bar/SocialBar'
-import './globals.scss'
 
+import './globals.scss'
 const jost = Jost({
   variable: '--font-jost',
   subsets: ['latin', 'cyrillic'],

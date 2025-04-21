@@ -10,7 +10,7 @@ import './Slider.scss'
 export type TCarouselProps = {
   carouselData: TCarousel[]
 }
-// const mod = (a: number, b: number) => ((a % b) + b) % b
+
 export const Slider: FC<TCarouselProps> = ({ carouselData }: TCarouselProps) => {
   const carouselCardsRef = useRef<HTMLDivElement>(null)
   const [isMouseDown, setIsMouseDown] = useState(false)
@@ -56,7 +56,6 @@ export const Slider: FC<TCarouselProps> = ({ carouselData }: TCarouselProps) => 
       <button
         onClick={() => buttonHandler('previous')}
         className='slider__button slider__button-prev'>
-        {/* <ArrowRight /> */}
         <Image
           src='/arrow-right-carousel.svg'
           alt='arrow'
@@ -73,7 +72,6 @@ export const Slider: FC<TCarouselProps> = ({ carouselData }: TCarouselProps) => 
           width={24}
           height={24}
         />
-        {/* <ArrowRight /> */}
       </button>
     </div>
   )

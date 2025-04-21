@@ -4,7 +4,7 @@ export type TCarousel = {
   backgroundImage: string
 }
 
-export const carouselData = [
+export const carouselData: TCarousel[] = [
   {
     id: 1,
     authorId: 1,

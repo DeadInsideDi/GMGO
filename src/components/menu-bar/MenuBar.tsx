@@ -1,15 +1,24 @@
+'use client'
 import Image from 'next/image'
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
+import { useAppStore } from '../../store/app.store'
+import { Footer } from '../footer/Footer'
 import { Section } from '../section/Section'
 import './MenuBar.scss'
 import { menuSections } from './menu.data'
 
-export type TMenuBarProps = {}
-
-export const MenuBar: FC<TMenuBarProps> = ({}: TMenuBarProps) => {
+export const MenuBar: FC = () => {
+  const { burgerState } = useAppStore()
+  // HydrationWarning
+  const [isClient, setIsClient] = useState(false)
+  useEffect(() => setIsClient(true), [])
+  if (!isClient) return null
+  // HydrationWarning
   return (
-    <div className='menu-bar'>
-      <button className='publish primary-button'>
+    <div
+      className='menu-bar'
+      aria-disabled={!burgerState}>
+      <button className='publish'>
         <Image
           src='/edit.svg'
           alt='publish'
@@ -26,6 +35,7 @@ export const MenuBar: FC<TMenuBarProps> = ({}: TMenuBarProps) => {
           />
         ))}
       </div>
+      <Footer />
     </div>
   )
 }

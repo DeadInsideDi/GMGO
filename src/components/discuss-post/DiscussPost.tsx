@@ -1,9 +1,9 @@
 'use client'
-import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
+import { ChatCircle } from '../../../public'
 import { useCategoryStore } from '../../store/category.store'
-import { compactNumber } from '../../utils/numberUtils'
+import { ViewsBlock } from '../ui/views-block/ViewsBlock'
 import './DiscussPost.scss'
 import { TDiscussPost } from './discuss-post.data'
 
@@ -21,23 +21,14 @@ export const DiscussPost: FC<TDiscussPostProps> = ({
       {title}
       <div className='discuss-post__details'>
         <span className='discuss-post__comments'>
-          <Image
-            src='/chat-circle.svg'
+          <ChatCircle
             width={18}
             height={18}
             alt='comments'
           />
           {comments}
         </span>
-        <span className='discuss-post__views'>
-          <Image
-            src='/eye.svg'
-            width={18}
-            height={18}
-            alt='views'
-          />
-          {compactNumber(views)}
-        </span>
+        <ViewsBlock views={views} />
         <span className='discuss-post__category'>{getCategoryById(categoryId)?.name}</span>
       </div>
     </Link>

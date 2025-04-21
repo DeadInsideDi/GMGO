@@ -1,46 +1,174 @@
-.social {
-  &-bar {
+@property --progress {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+
+.social-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding-top: 7px;
+  width: var(--social-width);
+
+  & > section {
     display: flex;
     flex-direction: column;
-    gap: 48px;
-    padding-top: 7px;
-    width: var(--social-width);
-  }
-  &-container {
-    display: flex;
-    flex-direction: column;
-    ul {
-      display: flex;
-      flex-direction: column;
-    }
-    h3 {
+
+    & h3 {
       font-weight: 600;
       letter-spacing: 1px;
       font-size: 12px;
       color: var(--light-text-color);
+      margin-bottom: 18px;
     }
-    &[data-aria-label='discussed'] {
-      ul {
-        gap: 24px;
+    & ul {
+      display: flex;
+      flex-direction: column;
+    }
+    &[aria-label='profile completion'] {
+      margin-top: -7px;
+      & > .outer-list {
+        background-color: #fbf7f1;
+        padding: 0 25px;
+        border-radius: 12px;
+
+        & > ul {
+          background-color: #f3ece0;
+          display: flex;
+          flex-direction: column;
+          gap: 1px;
+          & > div {
+            background-color: #fbf7f1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+
+            font-family: Lato;
+            font-size: 12px;
+            font-weight: 600;
+
+            &:first-child {
+              position: relative;
+              height: 162px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+              flex-direction: column;
+              user-select: none;
+            }
+            & > button {
+              height: 36px;
+              width: 36px;
+              border-radius: 50%;
+              background-color: white;
+              box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.05);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              & > svg {
+                height: 18px;
+                width: 18px;
+                rotate: 180deg;
+                color: var(--text-color);
+              }
+              &:hover {
+                background-color: var(--primary-color);
+                & > svg {
+                  color: white;
+                }
+              }
+            }
+          }
+        }
+      }
+      svg.circular-progress {
+        --size: 128px;
+        --stroke-width: 26px;
+        --max-degrees: 200;
+
+        rotate: 170deg;
+        top: 32px;
+        position: absolute;
+
+        --c: 0.9765625;
+        width: var(--size);
+        --radius: calc((var(--size) - var(--stroke-width) / 2) * var(--c));
+        --circumference: calc(var(--radius) * pi * 2);
+        --max-dash: calc(var(--circumference) / 360 * var(--max-degrees));
+        --dash: calc(var(--max-dash) / 100 * var(--progress));
+
+        & > circle {
+          cx: calc(var(--size) * var(--c));
+          cy: calc(var(--size) * var(--c));
+          r: var(--radius);
+          stroke-width: var(--stroke-width);
+          fill: none;
+          stroke-linecap: round;
+          transition: all 1s;
+          &.bg {
+            stroke: #f3ece0;
+            stroke-dasharray: var(--max-dash) var(--circumference);
+          }
+          &.fg {
+            stroke: var(--primary-color);
+            stroke-dasharray: var(--dash) var(--circumference);
+          }
+        }
       }
       h3 {
-        margin-bottom: 16px;
+        font-family: Lato;
+        font-weight: 600;
+        font-size: 14px;
+        color: var(--text-color);
+        margin-top: 10px;
+        margin-bottom: 5px;
+      }
+      samp {
+        font-family: Jost;
+        font-size: 24px;
+        font-weight: 700;
       }
     }
-    &[data-aria-label='topics'] {
-      .outer-list {
+    &[aria-label='discussed'] {
+      & > h3 {
+        margin-bottom: 16px;
+      }
+      & > ul {
+        gap: 24px;
+      }
+    }
+    &[aria-label='topics'] {
+      & > .outer-list {
         padding: 0 18px;
         background-color: var(--secondary-hover-color);
         border-radius: 6px;
-      }
-      ul {
-        background-color: #f0f3f6;
-        gap: 1px;
-      }
+        // overflow: hidden;
 
-      h3 {
-        margin-bottom: 18px;
+        & > ul {
+          background-color: #f0f3f6;
+          gap: 1px;
+
+          & > a {
+            &:first-child {
+              border-radius: 6px 6px 0 0;
+            }
+            &:last-child {
+              border-radius: 0 0 6px 6px;
+            }
+            &:active {
+              translate: -20px 0;
+            }
+          }
+        }
       }
     }
+  }
+}
+
+@media (max-width: 1200px) {
+  .social-bar {
+    display: none;
   }
 }

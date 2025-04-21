@@ -1,5 +1,7 @@
 'use client'
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
+import { ArrowRightCarousel } from '../../../public'
+import { useAccountStore } from '../../store/account.store'
 import { useCategoryStore } from '../../store/category.store'
 import { usePostsStore } from '../../store/posts.store'
 import { DiscussCategory } from '../discuss-category/DiscussCategory'
@@ -11,15 +13,49 @@ export type TSocialBarProps = {}
 export const SocialBar: FC<TSocialBarProps> = ({}: TSocialBarProps) => {
   const { currentPosts } = usePostsStore()
   const { selectTopCategories } = useCategoryStore()
+  const { isLoggedIn } = useAccountStore()
+  const [completionProgress, setCompletionProgress] = useState(50) // not in state
 
+  // HydrationWarning
+  const [isClient, setIsClient] = useState(false)
+  useEffect(() => setIsClient(true), [])
+  if (!isClient) return null
+  // HydrationWarning
+  const getRandom = (prev: number, index: number) =>
+    Math.max(Math.min(prev + ~~(Math.random() * 50 - 25 * index), 100), 0)
   return (
     <div className='social-bar'>
-      {/* AUTH */}
-      {/* <h1>SocialBar</h1> */}
+      {isLoggedIn() && (
+        <section aria-label='profile completion'>
+          <div className='outer-list'>
+            <ul>
+              <div>
+                <svg
+                  viewBox='0 0 250 250'
+                  className='circular-progress'
+                  style={{ '--progress': `${completionProgress}` } as React.CSSProperties}>
+                  <circle className='bg'></circle>
+                  <circle className='fg'></circle>
+                </svg>
+                <samp>{completionProgress}%</samp>
+                <h3>Заполненность профиля</h3>
+              </div>
+              {['Загрузите фотографию профиля', 'Добавьте обложку', 'Расскажите о себе', 'Подпишитесь на темы'].map(
+                (item, index) => (
+                  <div key={index}>
+                    {item}
+                    <button onClick={() => setCompletionProgress(prev => getRandom(prev, index))}>
+                      <ArrowRightCarousel alt='arrow' />
+                    </button>
+                  </div>
+                ),
+              )}
+            </ul>
+          </div>
+        </section>
+      )}
 
-      <section
-        className='social-container'
-        data-aria-label='discussed'>
+      <section aria-label='discussed'>
         <h3>ОБСУЖДАЕМОЕ</h3>
         <ul>
           {currentPosts.map(post => (
@@ -30,9 +66,7 @@ export const SocialBar: FC<TSocialBarProps> = ({}: TSocialBarProps) => {
           ))}
         </ul>
       </section>
-      <section
-        className='social-container'
-        data-aria-label='topics'>
+      <section aria-label='topics'>
         <h3>АКТУАЛЬНОЕ</h3>
 
         <div className='outer-list'>

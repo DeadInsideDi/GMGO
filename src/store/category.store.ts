@@ -16,4 +16,5 @@ export const useCategoryStore = create<ICategoryStore>((set, get) => ({
     get()
       .currentCategories.toSorted((a, b) => (increasing ? a.usageCount - b.usageCount : b.usageCount - a.usageCount))
       .slice(0, count),
+  getCategoriesToView: () => get().currentCategories.filter(category => category.usageCount > 0),
 }))

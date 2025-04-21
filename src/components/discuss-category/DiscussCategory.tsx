@@ -1,21 +1,21 @@
 import Link from 'next/link'
 import { FC } from 'react'
 import { stringArticlesByInt } from '../../utils/stringUtils'
-import { CustomTag } from '../custom-tag/CustomTag'
-import './DiscussCategory.scss'
 import { TCategoryItem } from '../category/category.data'
+import { CustomTag } from '../ui/custom-tag/CustomTag'
+import './DiscussCategory.scss'
 
 export type TDiscussCategoryProps = {
   discussCategory: TCategoryItem
 }
 
 export const DiscussCategory: FC<TDiscussCategoryProps> = ({
-  discussCategory: { name, usageCount },
+  discussCategory: { name, usageCount, href },
 }: TDiscussCategoryProps) => {
   return (
     <Link
-      href='/'
-      className='discuss-category'>
+      href={href}
+      className='discuss-category primary-tag'>
       <CustomTag text={name} />
       <span className='usage-count'>{stringArticlesByInt(usageCount)}</span>
     </Link>

@@ -17,20 +17,22 @@
     font-size: 12px;
     line-height: 18px;
 
-    span {
+    & > span {
       display: flex;
       align-items: center;
       gap: 5px;
-      height: fit-content; // 18px
+      height: fit-content;
       font-family: Lato;
       font-weight: 600;
       color: var(--light-text-color);
-      // align-items: center;
     }
   }
   &__comments {
     color: #9a9a9a;
     font-weight: 700;
+    svg {
+      stroke: #9a9a9a;
+    }
   }
   &__category {
     position: absolute;

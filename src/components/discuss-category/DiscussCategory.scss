@@ -1,13 +1,20 @@
 .discuss-category {
-  background-color: var(--secondary-hover-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 40px;
-  font-family: Lato;
-  font-size: 12px;
-  .usage-count {
+
+  margin: 0 -18px;
+  padding: 0 18px;
+
+  & > .usage-count {
     font-weight: 600;
-    color: #9a9a9a;
+    color: var(--grey-text-color);
+  }
+  &:hover > .usage-count {
+    color: var(--secondary-hover-color);
+  }
+  &:active > .usage-count {
+    color: var(--secondary-active-color);
   }
 }

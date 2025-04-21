@@ -16,7 +16,7 @@ export const Section: FC<TSectionProps> = ({ menuItem: { title, image, href } }:
 
   return (
     <Link
-      className={`secondary-button section${isActive ? ' secondary-button--active' : ''}`}
+      className={`section${isActive ? ' is-active' : ''}`}
       href={href}>
       <Image
         src={image}

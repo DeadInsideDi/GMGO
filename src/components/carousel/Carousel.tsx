@@ -1,6 +1,7 @@
 'use client'
-import Image from 'next/image'
 import { FC, useEffect, useRef, useState } from 'react'
+import { ArrowRightCarousel } from '../../../public'
+import { useAppStore } from '../../store/app.store'
 import { TCarousel } from '../carousel/carousel.data'
 import { CarouselItem } from '../carousel/CarouselItem'
 import './Carousel.scss'
@@ -11,7 +12,9 @@ export type TCarouselProps = {
 
 export const Carousel: FC<TCarouselProps> = ({ carouselData }: TCarouselProps) => {
   const carouselCardsRef = useRef<HTMLDivElement>(null)
+  const { isMobile } = useAppStore()
   const [isMouseDown, setIsMouseDown] = useState(false)
+  const [isScroll, setIsScroll] = useState<'scroll' | 'hidden'>('scroll')
 
   const buttonHandler = (direction: -1 | 1) => {
     carouselCardsRef.current!.scrollBy({
@@ -31,18 +34,29 @@ export const Carousel: FC<TCarouselProps> = ({ carouselData }: TCarouselProps) =
     dataset.scrollAt = scrollLeft === 0 ? 'start' : ~~(scrollLeft + clientWidth) + 3 >= scrollWidth ? 'end' : 'scroll'
   }
 
-  useEffect(() => window.addEventListener('mouseup', () => setIsMouseDown(false)), [])
+  useEffect(
+    () =>
+      window.addEventListener('mouseup', () => {
+        setIsScroll('scroll')
+        setIsMouseDown(false)
+      }),
+    [],
+  )
 
   return (
     <div className='carousel'>
       <div
         ref={carouselCardsRef}
         onDragStart={e => e.preventDefault()}
-        onMouseDown={() => setIsMouseDown(true)}
+        onMouseDown={e => {
+          setIsScroll(e.buttons === 4 ? 'hidden' : 'scroll')
+          setIsMouseDown(true)
+        }}
         onMouseMove={mouseMoveHandler}
         onScroll={scrollHandler}
+        style={{ overflowX: isScroll }}
         data-scroll-at='start'
-        className='carousel__container'>
+        className='container'>
         {carouselData.map(item => (
           <CarouselItem
             key={item.id}
@@ -50,26 +64,20 @@ export const Carousel: FC<TCarouselProps> = ({ carouselData }: TCarouselProps) =
           />
         ))}
       </div>
-      <button
-        onClick={() => buttonHandler(-1)}
-        className='carousel__button carousel__button--prev'>
-        <Image
-          src='/arrow-right-carousel.svg'
-          alt='arrow'
-          width={24}
-          height={24}
-        />
-      </button>
-      <button
-        onClick={() => buttonHandler(1)}
-        className='carousel__button carousel__button--next'>
-        <Image
-          src='/arrow-right-carousel.svg'
-          alt='arrow'
-          width={24}
-          height={24}
-        />
-      </button>
+      {!isMobile && (
+        <>
+          <button
+            onClick={() => buttonHandler(-1)}
+            className='prev'>
+            <ArrowRightCarousel alt='arrow' />
+          </button>
+          <button
+            onClick={() => buttonHandler(1)}
+            className='next'>
+            <ArrowRightCarousel alt='arrow' />
+          </button>
+        </>
+      )}
     </div>
   )
 }

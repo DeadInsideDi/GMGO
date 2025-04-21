@@ -1,81 +1,118 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FC, useState } from 'react'
-import { User } from '../../../public'
+import { useRouter } from 'next/navigation'
+import { FC, useEffect, useState } from 'react'
+import { Bell, Envelope, User } from '../../../public'
+import { SEARCH_ROUTE } from '../../constants'
+import { useAccountStore } from '../../store/account.store'
+import { useAppStore } from '../../store/app.store'
+import { RegistrationDialog } from '../registration-dialog/RegistrationDialog'
 import './Header.scss'
 
 export type THeaderProps = {}
 
 export const Header: FC<THeaderProps> = ({}: THeaderProps) => {
   const [searchQuery, setSearchQuery] = useState('')
-  return (
-    <div className='header'>
-      <div className='menu'>
+  const { isLoggedIn, account } = useAccountStore()
+  const { toggleBurgerState, setIsMobileByWidth, setIsDialogOpen } = useAppStore()
+  const router = useRouter()
+  const renderAccount = () =>
+    isLoggedIn() ? (
+      <>
         <Link
-          href='/'
-          className='logo'>
+          href={'/me'} // not existing route
+          className='account'>
           <Image
-            src='/logo.svg'
-            alt='logo'
-            width={124}
-            height={45}
-            priority={true}
+            src={account.avatar}
+            alt='avatar'
+            width={48}
+            height={48}
           />
         </Link>
-        <button className='burger'></button>
-      </div>
-
-      <div className='search'>
-        <Link href={`/search?query=${encodeURIComponent(searchQuery)}`}>
-          <Image
-            src='/search.svg'
-            alt='search'
-            width={18}
-            height={18}
-            priority={true}
-            className='search__image'
+        <Link
+          href={'/messages'} // not existing route
+          className='messages'>
+          <Envelope
+            alt='messages'
+            width={24}
+            height={24}
+          />
+          {account.privacyInfo.unreadMessages && (
+            <span className='unread-messages'>{account.privacyInfo.unreadMessages}</span>
+          )}
+        </Link>
+        <Link
+          href={'/settings'} // not existing route
+          className='settings'>
+          <Bell
+            alt='settings'
+            width={24}
+            height={24}
           />
         </Link>
-        <input
-          type='text'
-          className='search__input'
-          placeholder='Поиск'
-          autoComplete='off'
-          onChange={e => setSearchQuery(e.target.value)}
-        />
-      </div>
+      </>
+    ) : (
+      <button
+        onClick={() => setIsDialogOpen(true)}
+        className='login primary-button'>
+        <User />
+        Войти
+      </button>
+    )
 
-      <div className='account-container'>
-        <button className='login primary-button'>
-          <User
-            className='login__image'
-            stroke='#f7c5c1'
+  // +HydrationWarning
+  const handleResize = () => setIsMobileByWidth(window.innerWidth)
+  const [isClient, setIsClient] = useState(false)
+  useEffect(() => {
+    setIsClient(true)
+    setIsMobileByWidth(window.innerWidth)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  if (!isClient) return null
+
+  return (
+    <>
+      <RegistrationDialog />
+      <div className='header'>
+        <div className='menu'>
+          <Link
+            href='/'
+            className='logo'>
+            <Image
+              src='/logo.svg'
+              alt='logo'
+              width={124}
+              height={45}
+              priority={true}
+            />
+          </Link>
+          <button
+            onClick={toggleBurgerState}
+            className='burger'></button>
+        </div>
+        <div className='search'>
+          <Link href={`${SEARCH_ROUTE}${encodeURIComponent(searchQuery)}`}>
+            <Image
+              src='/search.svg'
+              alt='search'
+              width={18}
+              height={18}
+              priority={true}
+            />
+          </Link>
+          <input
+            type='text'
+            placeholder='Поиск'
+            autoComplete='off'
+            onKeyDown={e => e.key === 'Enter' && router.push(`${SEARCH_ROUTE}${encodeURIComponent(searchQuery)}`)}
+            onChange={e => setSearchQuery(e.currentTarget.value)}
           />
-          Войти
-        </button>
+        </div>
+        <div className='account-container'>{renderAccount()}</div>
       </div>
-    </div>
+    </>
   )
 }
-
-// <div className='search'>
-//         {/* https://gmgo.ru/search?query=sadas */}
-
-//         <Link href='{input text}'>
-//           <Image
-//             src='/search.svg'
-//             alt='search'
-//             width={18}
-//             height={18}
-//             priority={true}
-//             className='search__image'
-//           />
-//         </Link>
-//         <input
-//           type='text'
-//           className='search__input'
-//           placeholder='Поиск'
-//           autoComplete='off'
-//         />
-//       </div>

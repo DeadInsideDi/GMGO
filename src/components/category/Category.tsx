@@ -2,7 +2,6 @@
 import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
 import { FC, MouseEventHandler, useState } from 'react'
-import './Category.scss'
 import { TCategoryItem } from './category.data'
 
 export type TCategoryProps = {
@@ -27,6 +26,7 @@ export const Category: FC<TCategoryProps> = ({ category: { name, image, href } }
 
   return (
     <div
+      suppressHydrationWarning
       onMouseDown={e => isLeftMouseButton(e.button) && setMouseIsDown(true)}
       onMouseMove={e => mouseIsDown && setMouseMovedWhileDownBy(prevOffset => prevOffset + Math.abs(e.movementX))}
       onMouseUp={mouseUpHandler}

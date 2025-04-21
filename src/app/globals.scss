@@ -6,17 +6,32 @@
   --social-width: 298px;
 
   --primary-color: #eb6f65;
-  --primary-hover-color: color-mix(in oklab, var(--primary-color) 100%, #000 2.5%);
-  --primary-active-color: color-mix(in oklab, var(--primary-color) 100%, #000 5%);
+  --primary-hover-color: color-mix(in srgb, var(--primary-color) 100%, black 10%);
+  --primary-active-color: color-mix(in srgb, var(--primary-color) 100%, black 20%);
 
   --secondary-color: #fdfeff;
   --secondary-hover-color: #f5f7f9;
   --secondary-active-color: color-mix(in oklab, var(--secondary-color) 100%, #000 5%);
 
   --text-color: #262d35;
-  --text-hover-color: color-mix(in oklab, var(--text-color) 100%, white 19%);
+  --text-hover-color: color-mix(in srgb, var(--text-color) 100%, white 16%); // #262d35 -> #444A51
+
+  --bg-color: color-mix(in srgb, var(--text-hover-color) 40%, black 60%); // #444A51 -> #1b1d21
 
   --light-text-color: #808191;
+  --grey-text-color: #9a9a9a;
+
+  --red-status-color: hsl(4, 40%, 56%);
+  --yellow-status-color: hsl(49, 40%, 56%);
+  --green-status-color: hsl(94, 40%, 56%); // origin #8ABC63 (hue rotate 45deg)
+  --greenish-status-color: hsl(139, 40%, 56%);
+
+  --status-color-1: var(--red-status-color);
+  --status-color-2: var(--yellow-status-color);
+  --status-color-3: var(--green-status-color);
+  --status-color-4: var(--greenish-status-color);
+
+  color: var(--text-color);
 }
 
 * {
@@ -24,18 +39,32 @@
   padding: 0;
   margin: 0;
   flex-shrink: 0;
+  transition: 0.15s;
 }
 
 html {
   font-family: Jost, sans-serif;
   background-color: var(--secondary-color);
-  transition: 0.2s;
   padding: 0 2rem;
 }
 
 body {
   max-width: var(--max-width);
   margin: 0 auto;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background-color: var(--secondary-active-color);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--text-hover-color);
+    border-radius: 4px;
+    &:hover {
+      background-color: var(--text-color);
+    }
+  }
 }
 
 button,
@@ -45,15 +74,30 @@ input {
   border: none;
   font: inherit;
   outline: inherit;
+  user-select: none;
   // font-size: 100%;
 }
-
+dialog {
+  outline: none;
+  border: none;
+}
 a {
   text-decoration: none;
   user-select: none;
   -webkit-user-drag: none;
   color: inherit;
   // color: var(--text-color);
+}
+p {
+  text-wrap: balance;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-color);
 }
 
 button {
@@ -63,6 +107,8 @@ img {
   vertical-align: middle;
   justify-self: center;
   border-style: none;
+  -webkit-user-drag: none;
+  user-select: none;
 }
 
 *::placeholder {
@@ -105,7 +151,110 @@ img {
   }
 }
 
+.primary-link {
+  position: relative;
+  display: inline-block;
+  color: var(--light-text-color);
+
+  &::before {
+    content: '';
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background-color: var(--light-text-color);
+    opacity: 0.1;
+    bottom: -3px;
+    border-radius: 16px;
+  }
+  &:hover {
+    color: var(--primary-color);
+    &::before {
+      opacity: 0;
+    }
+  }
+}
+
+.primary-tag {
+  font-family: Lato;
+  font-weight: 700;
+  font-size: 12px;
+  background-color: var(--secondary-hover-color);
+
+  &:hover {
+    background-color: var(--primary-color);
+    color: white;
+    .custom-tag > span:first-child {
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  &:active {
+    background-color: var(--primary-hover-color);
+    color: var(--secondary-hover-color);
+    .custom-tag > span:first-child {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+}
+
 .main {
   display: flex;
   gap: 111px;
+
+  & > div:nth-child(2) {
+    flex: 1 1 0;
+    max-width: 592px;
+  }
+}
+
+@media (max-width: 1020px) {
+  .main {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    background-color: white;
+    padding: 0 1rem;
+  }
+  .header {
+    gap: unset;
+    height: 83px;
+    background-color: #fafbfc;
+    padding: 0 1rem;
+    margin: 0 -1rem;
+
+    & > .menu {
+      min-width: unset;
+      & > .logo {
+        display: none;
+      }
+    }
+    & > .account-container {
+      width: 140px; // for 3 items
+      gap: 16px;
+      & > a {
+        width: 36px;
+        height: 36px;
+        & > img {
+          width: 100%;
+          height: 100%;
+        }
+        & > svg {
+          width: 18px;
+          height: 18px;
+        }
+      }
+    }
+  }
+  .main > .menu-bar {
+    display: none;
+  }
+}
+
+@media (max-width: 320px) {
+  body {
+    overflow-x: auto;
+  }
 }
