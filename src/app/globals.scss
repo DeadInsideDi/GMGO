@@ -65,6 +65,9 @@ body {
       background-color: var(--text-color);
     }
   }
+  &:has(dialog[open])::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 button,
