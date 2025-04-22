@@ -7,6 +7,7 @@ import { Bell, Envelope, User } from '../../../public'
 import { SEARCH_ROUTE } from '../../constants'
 import { useAccountStore } from '../../store/account.store'
 import { useAppStore } from '../../store/app.store'
+import { PublishButton } from '../menu-bar/MenuBar'
 import { RegistrationDialog } from '../registration-dialog/RegistrationDialog'
 import './Header.scss'
 
@@ -15,33 +16,52 @@ export type THeaderProps = {}
 export const Header: FC<THeaderProps> = ({}: THeaderProps) => {
   const [searchQuery, setSearchQuery] = useState('')
   const { isLoggedIn, account } = useAccountStore()
+  const { isMobile } = useAppStore()
   const { toggleBurgerState, setIsMobileByWidth, setIsDialogOpen } = useAppStore()
   const router = useRouter()
   const renderAccount = () =>
     isLoggedIn() ? (
       <>
-        <Link
-          href={'/me'} // not existing route
-          className='account'>
-          <Image
-            src={account.avatar}
-            alt='avatar'
-            width={48}
-            height={48}
-          />
-        </Link>
-        <Link
-          href={'/messages'} // not existing route
-          className='messages'>
-          <Envelope
-            alt='messages'
-            width={24}
-            height={24}
-          />
-          {account.privacyInfo.unreadMessages && (
-            <span className='unread-messages'>{account.privacyInfo.unreadMessages}</span>
-          )}
-        </Link>
+        {isMobile ? (
+          <>
+            <PublishButton />
+            <Link
+              href={'/me'} // not existing route
+              className='account'>
+              <Image
+                src={account.avatar}
+                alt='avatar'
+                width={48}
+                height={48}
+              />
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link
+              href={'/me'} // not existing route
+              className='account'>
+              <Image
+                src={account.avatar}
+                alt='avatar'
+                width={48}
+                height={48}
+              />
+            </Link>
+            <Link
+              href={'/messages'} // not existing route
+              className='messages'>
+              <Envelope
+                alt='messages'
+                width={24}
+                height={24}
+              />
+              {account.privacyInfo.unreadMessages && (
+                <span className='unread-messages'>{account.privacyInfo.unreadMessages}</span>
+              )}
+            </Link>
+          </>
+        )}
         <Link
           href={'/settings'} // not existing route
           className='settings'>
