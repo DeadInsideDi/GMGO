@@ -101,28 +101,6 @@
       background-color: white;
       box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.05);
 
-      &.messages {
-        position: relative;
-        & > span.unread-messages {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-
-          position: absolute;
-          top: -1px;
-          right: -7px;
-          width: 20px;
-          height: 20px;
-          background-color: var(--primary-color);
-          color: white;
-          border-radius: 50%;
-
-          font-family: Lato;
-          font-size: 11px;
-          font-weight: 700;
-        }
-      }
-
       &:hover {
         transform: translateY(-3px);
         &::before {
@@ -142,7 +120,33 @@
         width: 14px;
         height: 14px;
       }
+      &:active {
+        background-color: var(--primary-active-color);
+      }
     }
+  }
+}
+
+.messages {
+  position: relative;
+  & > span.unread-messages {
+    position: absolute;
+    top: -1px;
+    right: -7px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+
+    font-family: Lato;
+    font-size: 11px;
+    font-weight: 700;
   }
 }
 
