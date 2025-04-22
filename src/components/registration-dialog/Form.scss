@@ -245,11 +245,12 @@ div.wrapper {
     & > h2 {
       width: 100%;
       margin-top: 53px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       font-size: 18px;
     }
 
     & > .social-buttons {
+      margin-bottom: 19px;
       & > button {
         height: 36px;
         width: 36px;
@@ -260,6 +261,9 @@ div.wrapper {
     }
     & > form {
       width: 100%;
+      &.email-sended > p {
+        margin-top: 0;
+      }
     }
     & > p.terms {
       width: calc(100% - 30px);
