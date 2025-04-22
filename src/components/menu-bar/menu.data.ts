@@ -11,7 +11,7 @@ export const menuSections = [
     title: 'Моя страница',
     image: '/user.svg',
     href: '/me',
-  },
+  }, // 'Моя страница' always first
   {
     id: 2,
     title: 'Лента',
