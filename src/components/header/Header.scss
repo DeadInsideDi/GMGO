@@ -89,7 +89,7 @@
       }
     }
     // account
-    & > a {
+    & > * {
       display: inline-block;
 
       display: flex;
@@ -100,9 +100,6 @@
       border-radius: 50%;
       background-color: white;
       box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.05);
-      & > img {
-        border-radius: 50%;
-      }
 
       &.messages {
         position: relative;
@@ -136,6 +133,14 @@
           border: 4px solid transparent;
           border-radius: 50%;
         }
+      }
+    }
+
+    & > .publish {
+      background-color: var(--primary-color);
+      & > img {
+        width: 14px;
+        height: 14px;
       }
     }
   }

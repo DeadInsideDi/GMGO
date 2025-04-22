@@ -237,7 +237,7 @@ img {
     & > .account-container {
       width: 140px; // for 3 items
       gap: 16px;
-      & > a {
+      & > * {
         width: 36px;
         height: 36px;
         & > img {
