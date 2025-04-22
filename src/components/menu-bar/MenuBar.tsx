@@ -7,6 +7,21 @@ import { Section } from '../section/Section'
 import './MenuBar.scss'
 import { menuSections } from './menu.data'
 
+export const PublishButton: FC = () => {
+  const { isMobile } = useAppStore()
+  return (
+    <button className='publish'>
+      <Image
+        src='/edit.svg'
+        alt='publish'
+        width={14}
+        height={14}
+      />
+      {!isMobile && 'Опубликовать'}
+    </button>
+  )
+}
+
 export const MenuBar: FC = () => {
   const { burgerState } = useAppStore()
   // HydrationWarning
@@ -18,15 +33,7 @@ export const MenuBar: FC = () => {
     <div
       className='menu-bar'
       aria-disabled={!burgerState}>
-      <button className='publish'>
-        <Image
-          src='/edit.svg'
-          alt='publish'
-          width={14}
-          height={14}
-        />
-        Опубликовать
-      </button>
+      <PublishButton />
       <div className='sections'>
         {menuSections.map(menuItem => (
           <Section
