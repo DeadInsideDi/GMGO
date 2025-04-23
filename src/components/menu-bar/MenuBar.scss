@@ -45,4 +45,25 @@
   padding: 18px 21px;
   background-color: #fafbfc;
   z-index: 3;
+  & > a {
+    --scale: 1.5; // 24px -> 36px
+    scale: var(--scale);
+    border-radius: 50%;
+
+    &.is-active > svg {
+      stroke: var(--primary-color);
+    }
+
+    & > * {
+      scale: calc(1 / var(--scale));
+      &.unread-messages:not(#\9) {
+        top: calc(-7px / var(--scale));
+        right: calc(-8px / var(--scale));
+      }
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
 }
