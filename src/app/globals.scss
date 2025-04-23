@@ -120,7 +120,7 @@ img {
   font-weight: inherit;
 }
 
-.primary-button,
+.primary-button:not(#\9),
 .secondary-button {
   display: flex;
   align-items: center;
@@ -128,7 +128,7 @@ img {
   border-radius: 8px;
   min-width: 96px;
 }
-.primary-button {
+.primary-button:not(#\9) {
   color: var(--secondary-color);
   font-weight: 600;
   background-color: var(--primary-color);
@@ -237,6 +237,7 @@ img {
     & > .account-container {
       width: 140px; // for 3 items
       gap: 16px;
+      justify-content: end;
       & > * {
         width: 36px;
         height: 36px;
