@@ -49,9 +49,16 @@
       svg {
         height: 24px;
         width: 24px;
-        fill: var(--primary-color);
-        transform: rotate(90deg) translate(6px, -1px);
+        &[alt='arrow-right'] {
+          fill: var(--primary-color);
+          transform: rotate(90deg) translate(6px, -1px);
+        }
       }
+    }
+    h3:not(:has(svg[alt='arrow-right'])) {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
   }
 }
