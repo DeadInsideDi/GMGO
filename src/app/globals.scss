@@ -210,13 +210,16 @@ img {
   }
 }
 
-@media (max-width: 1020px) {
-  .main {
-    justify-content: center;
+@media (max-width: 1200px) {
+  .account-container:not(#\9) {
+    justify-content: end;
   }
 }
 
 @media (max-width: 768px) {
+  .main {
+    justify-content: center;
+  }
   html {
     background-color: white;
     padding: 0 1rem;
@@ -237,7 +240,6 @@ img {
     & > .account-container {
       width: 140px; // for 3 items
       gap: 16px;
-      justify-content: end;
       & > * {
         width: 36px;
         height: 36px;
