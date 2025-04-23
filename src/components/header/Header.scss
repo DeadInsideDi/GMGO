@@ -77,6 +77,19 @@
     &:has(button.login) {
       justify-content: end;
     }
+    &:not(:has(button.login)) {
+      & > *:hover {
+        transform: translateY(-3px);
+        &::before {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          border: 4px solid transparent;
+          border-radius: 50%;
+        }
+      }
+    }
     .login {
       width: 111px;
       height: 44px;
@@ -100,18 +113,6 @@
       border-radius: 50%;
       background-color: white;
       box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.05);
-
-      &:hover {
-        transform: translateY(-3px);
-        &::before {
-          content: '';
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          border: 4px solid transparent;
-          border-radius: 50%;
-        }
-      }
     }
 
     & > .publish {
