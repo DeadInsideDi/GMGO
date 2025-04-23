@@ -1,5 +1,4 @@
 'use client'
-import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { FC } from 'react'
@@ -18,12 +17,7 @@ export const Section: FC<TSectionProps> = ({ menuItem: { title, image, href } }:
     <Link
       className={`section${isActive ? ' is-active' : ''}`}
       href={href}>
-      <Image
-        src={image}
-        alt={title}
-        width={20}
-        height={20}
-      />
+      {image}
       {title}
     </Link>
   )

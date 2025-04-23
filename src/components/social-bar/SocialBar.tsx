@@ -2,6 +2,7 @@
 import { FC, useEffect, useState } from 'react'
 import { ArrowRightCarousel } from '../../../public'
 import { useAccountStore } from '../../store/account.store'
+import { useAppStore } from '../../store/app.store'
 import { useCategoryStore } from '../../store/category.store'
 import { usePostsStore } from '../../store/posts.store'
 import { DiscussCategory } from '../discuss-category/DiscussCategory'
@@ -14,6 +15,7 @@ export const SocialBar: FC<TSocialBarProps> = ({}: TSocialBarProps) => {
   const { currentPosts } = usePostsStore()
   const { selectTopCategories } = useCategoryStore()
   const { isLoggedIn } = useAccountStore()
+  const { isMobile } = useAppStore()
   const [completionProgress, setCompletionProgress] = useState(50) // not in state
 
   // HydrationWarning
@@ -23,6 +25,8 @@ export const SocialBar: FC<TSocialBarProps> = ({}: TSocialBarProps) => {
   // HydrationWarning
   const getRandom = (prev: number, index: number) =>
     Math.max(Math.min(prev + ~~(Math.random() * 50 - 25 * index), 100), 0)
+
+  if (isMobile) return null
   return (
     <div className='social-bar'>
       {isLoggedIn() && (
