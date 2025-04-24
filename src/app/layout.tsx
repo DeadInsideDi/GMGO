@@ -32,8 +32,7 @@ export default function RootLayout({
     <html lang='en'>
       <head>
         <link
-          rel='preload'
-          as='style'
+          rel='stylesheet'
           href='/Lato/index.css'
         />
       </head>
