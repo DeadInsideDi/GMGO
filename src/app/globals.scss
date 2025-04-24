@@ -217,14 +217,14 @@ img {
 }
 
 @media (max-width: 768px) {
-  .main {
+  .main:not(#\9) {
     justify-content: center;
   }
-  html {
+  html:not(#\9) {
     background-color: white;
     padding: 0 1rem;
   }
-  .header {
+  .header:not(#\9) {
     gap: unset;
     height: 83px;
     background-color: #fafbfc;
@@ -257,7 +257,7 @@ img {
 }
 
 @media (max-width: 320px) {
-  body {
+  body:not(#\9) {
     overflow-x: auto;
   }
 }

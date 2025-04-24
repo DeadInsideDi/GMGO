@@ -122,7 +122,7 @@
 }
 
 @media (max-width: 768px) {
-  div.carousel > div.container {
+  div.carousel > div.container:not(#\9) {
     margin-top: 10px;
     height: 74.13px;
     gap: 17.77px;

@@ -176,7 +176,7 @@
 }
 
 @media (max-width: 768px) {
-  .news-feed {
+  .news-feed:not(#\9) {
     & > .filter {
       gap: 24px;
       height: 27px;
