@@ -55,6 +55,11 @@
       transition: 0.15s;
     }
 
+    & > svg {
+      width: 100%;
+      height: 100%;
+    }
+
     &.is-active > svg {
       stroke: var(--primary-color);
     }
