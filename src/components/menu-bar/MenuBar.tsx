@@ -34,7 +34,7 @@ export const MenuBar: FC = () => {
   } = useAccountStore()
   // HydrationWarning
   const [isClient, setIsClient] = useState(false)
-  useEffect(() => setIsClient(true), [])
+  useEffect(() => setIsClient(true))
   if (!isClient) return null
   // HydrationWarning
   return isMobile ? (

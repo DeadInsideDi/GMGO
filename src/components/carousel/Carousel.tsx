@@ -34,13 +34,11 @@ export const Carousel: FC<TCarouselProps> = ({ carouselData }: TCarouselProps) =
     dataset.scrollAt = scrollLeft === 0 ? 'start' : ~~(scrollLeft + clientWidth) + 3 >= scrollWidth ? 'end' : 'scroll'
   }
 
-  useEffect(
-    () =>
-      window.addEventListener('mouseup', () => {
-        setIsScroll('scroll')
-        setIsMouseDown(false)
-      }),
-    [],
+  useEffect(() =>
+    window.addEventListener('mouseup', () => {
+      setIsScroll('scroll')
+      setIsMouseDown(false)
+    }),
   )
 
   return (

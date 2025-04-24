@@ -22,7 +22,7 @@ export default function Page() {
 
   // HydrationWarning
   const [isClient, setIsClient] = useState(false)
-  useEffect(() => setIsClient(true), [])
+  useEffect(() => setIsClient(true))
   if (!isClient) return null
   // HydrationWarning
 
