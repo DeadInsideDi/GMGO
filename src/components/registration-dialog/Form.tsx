@@ -4,6 +4,27 @@ import { Hide, Instagram, Odnoklassniki, See, Telegram, Twitter, VK, YouTube } f
 import { getPasswordStrength, getPasswordStrengthName } from '../../utils/passwordUtils'
 import './Form.scss'
 
+export const Terms: FC = () => {
+  return (
+    <p className='terms'>
+      Регистрируясь или авторизуясь, вы соглашаетесь с условиями{' '}
+      <Link
+        className='primary-link'
+        href='/about'>
+        {/* polzovatelskoe-soglashenie */}
+        Пользовательского соглашения
+      </Link>{' '}
+      и{' '}
+      <Link
+        className='primary-link'
+        href='/about'>
+        {/* politika-konfidencialnosti */}
+        Политики конфиденциальности
+      </Link>
+    </p>
+  )
+}
+
 export type TEmailInputProps = {
   setEmail: Dispatch<SetStateAction<string>>
   email: string
@@ -50,20 +71,7 @@ export const EmailInputStep: FC<TEmailInputProps> = ({ email, setEmail, handleSu
         </div>
         <button type='submit'>Продолжить</button>
       </form>
-      <p className='terms'>
-        Регистрируясь или авторизуясь, вы соглашаетесь с условиями{' '}
-        <Link
-          className='primary-link'
-          href='/about/polzovatelskoe-soglashenie'>
-          Пользовательского соглашения
-        </Link>{' '}
-        и{' '}
-        <Link
-          className='primary-link'
-          href='/about/politika-konfidencialnosti'>
-          Политики конфиденциальности
-        </Link>
-      </p>
+      <Terms />
     </>
   )
 }
@@ -131,20 +139,7 @@ export const Authorization: FC<TAuthorizationProps> = ({
         </button>
         <button type='submit'>Войти</button>
       </form>
-      <p className='terms'>
-        Регистрируясь или авторизуясь, вы соглашаетесь с условиями{' '}
-        <Link
-          className='primary-link'
-          href='/about/polzovatelskoe-soglashenie'>
-          Пользовательского соглашения
-        </Link>{' '}
-        и{' '}
-        <Link
-          className='primary-link'
-          href='/about/politika-konfidencialnosti'>
-          Политики конфиденциальности
-        </Link>
-      </p>
+      <Terms />
     </>
   )
 }
@@ -258,20 +253,8 @@ export const Registration: FC<TRegistrationProps> = ({ email, setEmail, password
         </div>
         <button type='submit'>Зарегистрироваться</button>
       </form>
-      <p className='terms'>
-        Регистрируясь или авторизуясь, вы соглашаетесь с условиями{' '}
-        <Link
-          className='primary-link'
-          href='/about/polzovatelskoe-soglashenie'>
-          Пользовательского соглашения
-        </Link>{' '}
-        и{' '}
-        <Link
-          className='primary-link'
-          href='/about/politika-konfidencialnosti'>
-          Политики конфиденциальности
-        </Link>
-      </p>
+
+      <Terms />
     </>
   )
 }

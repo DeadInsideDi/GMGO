@@ -53,7 +53,7 @@ export const MenuBar: FC = () => {
           width={24}
           height={24}
         />
-        {unreadMessages && <span className='unread-messages'>{unreadMessages}</span>}
+        {unreadMessages ? <span className='unread-messages'>{unreadMessages}</span> : ''}
       </Link>
       {menuSections.slice(3, 5).map(menuItem => (
         <Section

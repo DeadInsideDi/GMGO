@@ -24,7 +24,7 @@ export const Footer: FC<TFooterProps> = ({}) => {
         Designed by{' '}
         <Link
           className='primary-link'
-          href={'/bla%20bla'}>
+          href={'/'}>
           MatSen
         </Link>
       </p>
