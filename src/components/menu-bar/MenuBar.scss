@@ -46,24 +46,24 @@
   background-color: #fafbfc;
   z-index: 3;
   & > a {
-    --scale: 1.5; // 24px -> 36px
-    scale: var(--scale);
-    border-radius: 50%;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -6px; // 24px -> 36px
+      border-radius: 50%;
+      transition: 0.15s;
+    }
 
     &.is-active > svg {
       stroke: var(--primary-color);
     }
 
-    & > * {
-      scale: calc(1 / var(--scale));
-      &.unread-messages:not(#\9) {
-        top: calc(-7px / var(--scale));
-        right: calc(-8px / var(--scale));
-      }
-    }
-
-    &:hover {
+    &:hover::before {
       background-color: rgba(0, 0, 0, 0.1);
+    }
+    &:active::before {
+      background-color: rgba(0, 0, 0, 0.2);
     }
   }
 }
