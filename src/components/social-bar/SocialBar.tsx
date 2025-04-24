@@ -20,7 +20,7 @@ export const SocialBar: FC<TSocialBarProps> = ({}: TSocialBarProps) => {
 
   // HydrationWarning
   const [isClient, setIsClient] = useState(false)
-  useEffect(() => setIsClient(true))
+  useEffect(() => setIsClient(true), [])
   if (!isClient) return null
   // HydrationWarning
   const getRandom = (prev: number, index: number) =>

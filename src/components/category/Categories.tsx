@@ -16,7 +16,7 @@ export const Categories: FC<TCategoriesProps> = ({ categories }: TCategoriesProp
     if (!isMouseDown || !carouselCardsRef.current) return
     carouselCardsRef.current.scrollBy({ left: -event.movementX })
   }
-  useEffect(() => window.addEventListener('mouseup', () => setIsMouseDown(false)))
+  useEffect(() => window.addEventListener('mouseup', () => setIsMouseDown(false)), [])
 
   return (
     <div

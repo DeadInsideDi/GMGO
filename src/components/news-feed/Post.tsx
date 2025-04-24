@@ -49,7 +49,7 @@ export const Post: FC<TPostProps> = ({
     window.addEventListener('resize', handlePostResize)
     setTimeout(handlePostResize, 500)
     return () => window.removeEventListener('resize', handlePostResize)
-  })
+  }, [])
 
   return (
     <div
