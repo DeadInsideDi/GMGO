@@ -2,20 +2,25 @@ import Link from 'next/link'
 import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
 import { Hide, Instagram, Odnoklassniki, See, Telegram, Twitter, VK, YouTube } from '../../../public'
 import { AGREEMENT_ROUTE, CONFIDENTIALITY_ROUTE } from '../../constants'
+import { useAppStore } from '../../store/app.store'
 import { getPasswordStrength, getPasswordStrengthName } from '../../utils/passwordUtils'
 import './Form.scss'
 
 export const Terms: FC = () => {
+  const { setIsDialogOpen } = useAppStore()
+
   return (
     <p className='terms'>
       Регистрируясь или авторизуясь, вы соглашаетесь с условиями{' '}
       <Link
+        onClick={() => setIsDialogOpen(false)}
         className='primary-link'
         href={AGREEMENT_ROUTE}>
         Пользовательского соглашения
       </Link>{' '}
       и{' '}
       <Link
+        onClick={() => setIsDialogOpen(false)}
         className='primary-link'
         href={CONFIDENTIALITY_ROUTE}>
         Политики конфиденциальности
