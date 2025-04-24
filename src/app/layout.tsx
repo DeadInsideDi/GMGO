@@ -30,6 +30,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
+      <head>
+        <link
+          rel='stylesheet'
+          href='/Lato/index.css'
+        />
+      </head>
       <body className={`${jost.variable} ${raleway.variable}`}>
         <Header />
         <div className='main'>
