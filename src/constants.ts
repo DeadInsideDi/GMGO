@@ -7,5 +7,6 @@ export const CATEGORY_ROUTE = '/category/'
 export const AUTHOR_ROUTE = '/u/'
 export const SEARCH_ROUTE = '/search?query='
 
-export const RULES_ROUTE = '/about/pravila-ploshadki'
-export const CONFIDENTIALITY_ROUTE = '/about/politika-konfidencialnosti'
+export const AGREEMENT_ROUTE = '/about' // +/polzovatelskoe-soglashenie
+export const RULES_ROUTE = '/about' // +/pravila-ploshadki
+export const CONFIDENTIALITY_ROUTE = '/about' // +/politika-konfidencialnosti

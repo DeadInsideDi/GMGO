@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
 import { Hide, Instagram, Odnoklassniki, See, Telegram, Twitter, VK, YouTube } from '../../../public'
+import { AGREEMENT_ROUTE, CONFIDENTIALITY_ROUTE } from '../../constants'
 import { getPasswordStrength, getPasswordStrengthName } from '../../utils/passwordUtils'
 import './Form.scss'
 
@@ -10,15 +11,13 @@ export const Terms: FC = () => {
       Регистрируясь или авторизуясь, вы соглашаетесь с условиями{' '}
       <Link
         className='primary-link'
-        href='/about'>
-        {/* polzovatelskoe-soglashenie */}
+        href={AGREEMENT_ROUTE}>
         Пользовательского соглашения
       </Link>{' '}
       и{' '}
       <Link
         className='primary-link'
-        href='/about'>
-        {/* politika-konfidencialnosti */}
+        href={CONFIDENTIALITY_ROUTE}>
         Политики конфиденциальности
       </Link>
     </p>
