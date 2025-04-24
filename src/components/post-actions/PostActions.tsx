@@ -20,6 +20,8 @@ export const PostActions: FC<TPostActionsProps> = ({ id, likes, dislikes, commen
   return (
     <div className='actions'>
       <button
+        type='button'
+        aria-label='like'
         onClick={() => toggleLikePost(id)}
         className={`like-button${isLikedPost(id) ? ' is-active' : ''}`}>
         <Like
@@ -30,6 +32,8 @@ export const PostActions: FC<TPostActionsProps> = ({ id, likes, dislikes, commen
         {likes}
       </button>
       <button
+        type='button'
+        aria-label='dislike'
         onClick={() => toggleDislikePost(id)}
         className={`dislike-button${isDislikedPost(id) ? ' is-active' : ''}`}>
         <Like
@@ -39,7 +43,10 @@ export const PostActions: FC<TPostActionsProps> = ({ id, likes, dislikes, commen
         />
         {dislikes}
       </button>
-      <button className='comment-button'>
+      <button
+        type='button'
+        aria-label='comment'
+        className='comment-button'>
         <ChatCircle
           width={20}
           height={20}
@@ -49,7 +56,10 @@ export const PostActions: FC<TPostActionsProps> = ({ id, likes, dislikes, commen
       </button>
       {isMobile ? (
         <>
-          <button className='share-button'>
+          <button
+            type='button'
+            aria-label='share'
+            className='share-button'>
             <Image
               width={20}
               height={20}
@@ -58,6 +68,8 @@ export const PostActions: FC<TPostActionsProps> = ({ id, likes, dislikes, commen
             />
           </button>
           <button
+            type='button'
+            aria-label='favorite'
             onClick={() => toggleFavoritePost(id)}
             className={`favorite-button${isFavoritePost(id) ? ' is-active' : ''}`}>
             <Bookmark
@@ -68,7 +80,10 @@ export const PostActions: FC<TPostActionsProps> = ({ id, likes, dislikes, commen
           </button>
         </>
       ) : (
-        <button className='share-button'>
+        <button
+          type='button'
+          aria-label='share'
+          className='share-button'>
           <Image
             width={20}
             height={20}
@@ -81,6 +96,8 @@ export const PostActions: FC<TPostActionsProps> = ({ id, likes, dislikes, commen
 
       {isMobile ? (
         <button
+          type='button'
+          aria-label='getMoreInfo'
           onClick={() => console.log('simulate more info')}
           className='more-info-button'>
           <Image
@@ -92,6 +109,8 @@ export const PostActions: FC<TPostActionsProps> = ({ id, likes, dislikes, commen
         </button>
       ) : (
         <button
+          type='button'
+          aria-label='favorite'
           onClick={() => toggleFavoritePost(id)}
           className={`favorite-button${isFavoritePost(id) ? ' is-active' : ''}`}>
           <Bookmark

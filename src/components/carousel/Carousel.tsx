@@ -67,11 +67,15 @@ export const Carousel: FC<TCarouselProps> = ({ carouselData }: TCarouselProps) =
       {!isMobile && (
         <>
           <button
+            type='button'
+            aria-label='previous'
             onClick={() => buttonHandler(-1)}
             className='prev'>
             <ArrowRightCarousel alt='arrow' />
           </button>
           <button
+            type='button'
+            aria-label='next'
             onClick={() => buttonHandler(1)}
             className='next'>
             <ArrowRightCarousel alt='arrow' />

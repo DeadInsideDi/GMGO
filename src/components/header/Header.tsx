@@ -26,6 +26,7 @@ export const Header: FC<THeaderProps> = ({}: THeaderProps) => {
           <>
             <PublishButton />
             <Link
+              aria-label='Go to profile'
               href={'/me'} // not existing route
               className='account'>
               <Image
@@ -39,6 +40,7 @@ export const Header: FC<THeaderProps> = ({}: THeaderProps) => {
         ) : (
           <>
             <Link
+              aria-label='Go to profile'
               href={'/me'} // not existing route
               className='account'>
               <Image
@@ -49,6 +51,7 @@ export const Header: FC<THeaderProps> = ({}: THeaderProps) => {
               />
             </Link>
             <Link
+              aria-label='Go to messages'
               href={'/messages'} // not existing route
               className='messages'>
               <Envelope
@@ -63,6 +66,7 @@ export const Header: FC<THeaderProps> = ({}: THeaderProps) => {
           </>
         )}
         <Link
+          aria-label='Go to settings'
           href={'/settings'} // not existing route
           className='settings'>
           <Bell
@@ -74,6 +78,8 @@ export const Header: FC<THeaderProps> = ({}: THeaderProps) => {
       </>
     ) : (
       <button
+        type='button'
+        aria-label='login'
         onClick={() => setIsDialogOpen(true)}
         className='login primary-button'>
         <User />
@@ -100,6 +106,7 @@ export const Header: FC<THeaderProps> = ({}: THeaderProps) => {
         <div className='menu'>
           <Link
             href='/'
+            aria-label='Logo'
             className='logo'>
             <Image
               src='/logo.svg'
@@ -110,11 +117,15 @@ export const Header: FC<THeaderProps> = ({}: THeaderProps) => {
             />
           </Link>
           <button
+            type='button'
+            aria-label='burger'
             onClick={toggleBurgerState}
             className='burger'></button>
         </div>
         <div className='search'>
-          <Link href={`${SEARCH_ROUTE}${encodeURIComponent(searchQuery)}`}>
+          <Link
+            aria-label='Search'
+            href={`${SEARCH_ROUTE}${encodeURIComponent(searchQuery)}`}>
             <Image
               src='/search.svg'
               alt='search'

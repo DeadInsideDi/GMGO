@@ -55,6 +55,7 @@ export const Post: FC<TPostProps> = ({
       className='post'
       ref={postRef}>
       <Link
+        aria-label='Go to this category'
         href={mainCategory?.href || HOME_ROUTE}
         className='category'>
         <div className='image-container'>
