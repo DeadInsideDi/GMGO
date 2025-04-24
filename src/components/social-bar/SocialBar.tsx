@@ -33,7 +33,9 @@ export const SocialBar: FC<TSocialBarProps> = ({}: TSocialBarProps) => {
         <section aria-label='profile completion'>
           <div className='outer-list'>
             <ul>
-              <div>
+              <div
+                role='progressbar'
+                aria-label='profile completion'>
                 <svg
                   viewBox='0 0 250 250'
                   className='circular-progress'

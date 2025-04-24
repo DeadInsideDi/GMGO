@@ -15,6 +15,7 @@ export const Section: FC<TSectionProps> = ({ menuItem: { title, image, href } }:
 
   return (
     <Link
+      aria-label={`Go to ${title}`}
       className={`section${isActive ? ' is-active' : ''}`}
       href={href}>
       {image}

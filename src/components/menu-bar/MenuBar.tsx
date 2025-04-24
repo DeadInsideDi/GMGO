@@ -13,7 +13,10 @@ import { menuSections } from './menu.data'
 export const PublishButton: FC = () => {
   const { isMobile } = useAppStore()
   return (
-    <button className='publish'>
+    <button
+      type='button'
+      aria-label='publish'
+      className='publish'>
       <Image
         src='/edit.svg'
         alt='publish'
@@ -46,6 +49,7 @@ export const MenuBar: FC = () => {
         />
       ))}
       <Link
+        aria-label='Go to messages'
         href={'/messages'} // not existing route
         className='messages'>
         <Envelope
