@@ -89,7 +89,7 @@ export const Header: FC<THeaderProps> = ({}: THeaderProps) => {
     setIsMobileByWidth(window.innerWidth)
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
-  }, [])
+  })
 
   if (!isClient) return null
 
