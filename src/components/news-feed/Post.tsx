@@ -30,26 +30,25 @@ export const Post: FC<TPostProps> = ({
   const { getAuthorById } = useAuthorStore()
   const author = getAuthorById(authorId)
 
-  const handlePostResize = () => {
-    if (!postRef.current) return
-    let freeSpace = (postRef.current.getBoundingClientRect().width || 300) - 220 // computed
-    const showedCategoryIds: number[] = []
-    const hiddenCategoryIds: number[] = []
-
-    categoryIds.forEach(id => {
-      const categoryName = getCategoryById(id)?.name
-      freeSpace -= (categoryName?.length || 0) * 7 + 32 // computed
-      if (freeSpace > 0) showedCategoryIds.push(id)
-      else hiddenCategoryIds.push(id)
-    })
-    setCategories([showedCategoryIds, hiddenCategoryIds])
-  }
-
   useEffect(() => {
+    const handlePostResize = () => {
+      if (!postRef.current) return
+      let freeSpace = (postRef.current.getBoundingClientRect().width || 300) - 220 // computed
+      const showedCategoryIds: number[] = []
+      const hiddenCategoryIds: number[] = []
+
+      categoryIds.forEach(id => {
+        const categoryName = getCategoryById(id)?.name
+        freeSpace -= (categoryName?.length || 0) * 7 + 32 // computed
+        if (freeSpace > 0) showedCategoryIds.push(id)
+        else hiddenCategoryIds.push(id)
+      })
+      setCategories([showedCategoryIds, hiddenCategoryIds])
+    }
     window.addEventListener('resize', handlePostResize)
     setTimeout(handlePostResize, 500)
     return () => window.removeEventListener('resize', handlePostResize)
-  }, [])
+  }, [window])
 
   return (
     <div

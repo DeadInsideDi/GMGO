@@ -138,7 +138,7 @@ export const useAccountStore = create<IAccountStore>()(
       },
 
       login: email => {
-        set(state => ({
+        set(() => ({
           account: useAccountsStore.getState().getAccountByEmail(email),
         }))
       },

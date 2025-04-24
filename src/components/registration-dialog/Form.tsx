@@ -178,9 +178,9 @@ export type TRegistrationProps = {
 export const Registration: FC<TRegistrationProps> = ({ email, setEmail, password, setPassword, handleSubmit }) => {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
-  let passwordStrength = getPasswordStrength(password)
+  const [passwordStrength, setPasswordStrength] = useState(getPasswordStrength(password))
   useEffect(() => {
-    passwordStrength = getPasswordStrength(password)
+    setPasswordStrength(getPasswordStrength(password))
 
     if (password !== confirmPassword) {
       console.log('passwords do not match')

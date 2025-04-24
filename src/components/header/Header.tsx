@@ -82,14 +82,14 @@ export const Header: FC<THeaderProps> = ({}: THeaderProps) => {
     )
 
   // +HydrationWarning
-  const handleResize = () => setIsMobileByWidth(window.innerWidth)
   const [isClient, setIsClient] = useState(false)
   useEffect(() => {
     setIsClient(true)
+    const handleResize = () => setIsMobileByWidth(window.innerWidth)
     setIsMobileByWidth(window.innerWidth)
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
-  }, [])
+  }, [isClient])
 
   if (!isClient) return null
 
