@@ -43,6 +43,7 @@
 	}
 
 	&:has(button:focus) {
+		// just test (not working in mobile)
 		& > button {
 			color: var(--primary-color);
 			background-color: white;
@@ -53,19 +54,7 @@
 			pointer-events: auto;
 		}
 	}
-	@media (hover: hover) and (pointer: fine) {
-		&:has(button:hover) {
-			& > button {
-				color: var(--primary-color);
-				background-color: white;
-			}
-			& > .tooltip__content {
-				bottom: calc(100% + 16px);
-				opacity: 1;
-				pointer-events: auto;
-			}
-		}
-	}
+
 	// &--active {
 	//   button {
 	//     color: var(--primary-color);
