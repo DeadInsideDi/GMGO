@@ -1,0 +1,10 @@
+.custom-tag {
+  display: inline-flex;
+  align-items: center;
+  span {
+    font-weight: 700;
+    &:first-child {
+      color: #9a9a9a;
+    }
+  }
+}
